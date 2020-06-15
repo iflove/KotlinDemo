@@ -1,15 +1,22 @@
-package demo.chapter8
+package demo.chapter9
 
-import kotlinx.coroutines.experimental.*
+import kotlinx.coroutines.*
 import kotlin.system.measureTimeMillis
 
 
 /**
  * Created by system on 2017/8/27.
  */
+suspend fun main() = coroutineScope {
+    for (i in 0 until 10) {
+        launch {
+            delay(1000L - i * 10)
+            print("❤️$i ")
+        }
+    }
+}
 
-//fun main(args: Array<String>) {
-//
+//fun main() {
 //    KotlinCoroutines().test()
 //}
 
@@ -20,8 +27,8 @@ private class KotlinCoroutines {
         println("挂起")
     }
 
-    fun test() {
-        launch(CommonPool) {
+    suspend fun test() = coroutineScope {
+        launch {
             // create new coroutine in common thread pool
             delay(1000L) // non-blocking delay for 1 second (default time unit is ms)
             println("World!") // print after delay
@@ -30,10 +37,7 @@ private class KotlinCoroutines {
         Thread.sleep(2000L) // block
 
 
-
-
     }
-
 
 
 }
@@ -51,8 +55,8 @@ suspend fun doSomethingUsefulTwo(): Int {
 
 fun main(args: Array<String>) = runBlocking<Unit> {
     val time = measureTimeMillis {
-        val one = async(CommonPool) { doSomethingUsefulOne() }
-        val two = async(CommonPool) { doSomethingUsefulTwo() }
+        val one = async() { doSomethingUsefulOne() }
+        val two = async() { doSomethingUsefulTwo() }
         println("Completing...")
         println("The answer is ${one.await() + two.await()}")
     }

@@ -49,7 +49,7 @@ object KotlinAnnotation {
             AnnotationTarget.VALUE_PARAMETER,
             AnnotationTarget.PROPERTY_GETTER,
             AnnotationTarget.EXPRESSION)
-    @Retention(AnnotationRetention.RUNTIME)
+    @Retention(AnnotationRetention.SOURCE)
     @MustBeDocumented
     annotation class ApplicationScope
 

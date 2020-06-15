@@ -10,7 +10,7 @@
 package demo.chapter8
 
 
-fun main(args: Array<String>) {
+fun main() {
     val result =
             html {
                 head {
@@ -37,8 +37,8 @@ fun main(args: Array<String>) {
                     p {
                         +"Command line arguments were:"
                         ul {
-                            for (arg in args)
-                                li { +arg }
+//                            for (arg in args)
+//                                li { +arg }
                         }
                     }
                 }

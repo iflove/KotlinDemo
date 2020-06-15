@@ -10,6 +10,5 @@ public class StaticTest {
         System.out.println(World.Companion);
         System.out.println(World.VERSION);
         System.out.println(World.time);
-
     }
 }
